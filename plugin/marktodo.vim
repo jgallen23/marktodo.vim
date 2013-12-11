@@ -70,8 +70,8 @@ function! marktodo#newline(offset)
   execute startlnum+1
   if line =~# "[-+][-+] "
     call setline(startlnum+1, "-- ")
-    startinsert!
   endif
+  startinsert!
   return "\<End>"
 
 endfunction
