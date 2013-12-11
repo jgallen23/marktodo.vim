@@ -81,9 +81,6 @@ function! marktodo#mapping()
     nmap <silent> <buffer> o :call marktodo#newline(0)<CR>
     nmap <silent> <buffer> O :call marktodo#newline(-1)<CR>
   endif
-  if mapcheck("\<CR>", "i") == ''
-    imap <silent> <buffer> <CR> :call marktodo#newline()<CR>
-  endif
 
 endfunction
 
