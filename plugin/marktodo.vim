@@ -10,7 +10,9 @@ function! marktodo#toggle()
 endfunction
 
 function! marktodo#done_down()
-  sort /++/
+  let startpos = marktodo#start_of_project()
+  let endpos = marktodo#end_of_project()
+  exe startpos.','.endpos 'sort /++/'
 endfunction
 
 function! marktodo#add_tag(tag)
@@ -38,6 +40,26 @@ function! marktodo#toggle_tag(tag)
     call marktodo#add_tag(a:tag)
   endif
   return 1
+endfunction
+
+function! marktodo#start_of_project()
+  return search('^#', 'Wbn') + 1
+endfunction
+
+function! marktodo#end_of_project()
+  let endpos = search('^\n', 'Wn') - 1
+  if endpos == -1
+    let endpos = getpos('$')[1]
+  endif
+  return endpos
+endfunction
+
+function! marktodo#select_project()
+  let start = marktodo#start_of_project()
+  let end = marktodo#end_of_project()
+  call setpos('.',[0, start, 1])
+  normal! v
+  call setpos('.',[0, end, 999])
 endfunction
 
 function! marktodo#syntax()
