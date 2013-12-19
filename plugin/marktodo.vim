@@ -113,5 +113,11 @@ function! marktodo#init()
   call marktodo#syntax()
 endfunction
 
-au BufLeave,CursorHold *.md :w
+function! marktodo#save()
+  if &mod == 1
+    write
+  endif
+endfunction
+
+au BufLeave,CursorHold *.md :call marktodo#save()
 
