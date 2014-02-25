@@ -70,16 +70,16 @@ function! marktodo#syntax()
 
   syn match marktodoTodayLine /#today/
   syn match marktodoToday +--\%(.*#today\)\@=+
-  hi link marktodoToday Identifier
+  hi marktodoToday ctermfg=234 ctermbg=3
   syn match marktodoWeek +--\%(.*#week\)\@=+
   hi link marktodoWeek Label
   syn match marktodoNext +--\%(.*#next\)\@=+
-  hi link marktodoNext Search
+  hi marktodoNext ctermfg=234 ctermbg=1
 
   syn match marktodoTag /#\w\+/
   hi link marktodoTag Comment
 
-  syn cluster mkdNonListItem contains=htmlItalic,htmlBold,htmlBoldItalic,mkdFootnotes,mkdID,mkdURL,mkdLink,mkdLinkDef,mkdLineBreak,mkdBlockquote,mkdCode,mkdIndentCode,mkdListItem,mkdRule,htmlH1,htmlH2,htmlH3,htmlH4,htmlH5,htmlH6,marktodoActiveItem,marktodoCompleteItem,marktodoToday,marktodoWeek,marktodoNext,marktodoTag
+  "syn cluster mkdNonListItem contains=htmlItalic,htmlBold,htmlBoldItalic,mkdFootnotes,mkdID,mkdURL,mkdLink,mkdLinkDef,mkdLineBreak,mkdBlockquote,mkdCode,mkdIndentCode,mkdListItem,mkdRule,htmlH1,htmlH2,htmlH3,htmlH4,htmlH5,htmlH6,marktodoActiveItem,marktodoCompleteItem,marktodoToday,marktodoWeek,marktodoNext,marktodoTag
   setlocal comments=b:*,b:+,b:-,b:--
 
 endfunction
